@@ -4,6 +4,7 @@
 
 ```sh
 git clone https://github.com/dkarmalita/jest-puppeteer-setup.git
+cd jest-puppeteer-setup
 npm ci
 npm t
 ```
