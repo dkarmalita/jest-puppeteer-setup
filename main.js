@@ -12,7 +12,6 @@ const waitForTime = ms => new Promise(r => setTimeout(r, ms));
   await browserLaunch({ headless: config.headless }); // ---
 
   // Executing some payload in the browser
-  // await exploreUrl(page, `http://localhost:${port}`);
   jestSpawn();
   console.log('DONE jest')
 
