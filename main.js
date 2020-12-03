@@ -1,8 +1,6 @@
 const { browserLaunch, browserConnect, browserClose, serverSpawn, jestSpawn } = require('./lib');
 const config = require('./config');
 
-const waitForTime = ms => new Promise(r => setTimeout(r, ms));
-
 (async () => {
 
   // Launching server in a separate thread (see @kard/spa-server for details)
