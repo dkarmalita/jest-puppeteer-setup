@@ -27,8 +27,8 @@ const addIt = (id) => it(id,async () => {
   await page.close();
 })
 
-describe('e. puppeteer many', () => {
-  for (var i = 10; i >= 0; i--) {
+describe(`e. puppeteer many ${config.testsQty.e}`, () => {
+  for (var i = config.testsQty.e; i >= 0; i--) {
     addIt(`Auto ${i}`)
   }
 })
