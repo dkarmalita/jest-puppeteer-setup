@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const { browserLaunch, browserConnect, browserClose, serverSpawn, jestSpawn } = require('./lib');
 const config = require('./config');
 
