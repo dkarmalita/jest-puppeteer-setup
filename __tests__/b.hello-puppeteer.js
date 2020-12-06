@@ -3,10 +3,10 @@ const config = require('../config');
 
 jest.setTimeout(config.jestTimeout)
 
-const url = `http://localhost:${config.port}`
+const url = `http://localhost:${config.server.port}`
 
 it('b. hello puppeteer', async () => {
-  const browser = await browserConnect({slowMo: config.slowMo})
+  const browser = await browserConnect(config.browser.connect)
   const incognitoCtx = await browser.createIncognitoBrowserContext();
   const page = await incognitoCtx.newPage();
 

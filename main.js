@@ -6,10 +6,10 @@ const config = require('./config');
 (async () => {
 
   // Launching server in a separate thread (see @kard/spa-server for details)
-  const server = serverSpawn({ public: 'static', port: config.port });
+  const server = serverSpawn(config.server);
 
   // Launching browser
-  await browserLaunch({ headless: config.headless }); // ---
+  await browserLaunch(config.browser.launch); // ---
 
   // Executing some payload in the browser
   jestSpawn();

@@ -33,6 +33,28 @@
     <a href="https://codepen.io/anthonydugois/full/mewdyZ" target="_blank">SVG Path Builder</a>
   </li>
 </ul>
+<script type="text/javascript">
+
+  fetch('https://jsonplaceholder.typicode.com/todos/1')
+    .then(response => response.json())
+    .then(json => console.log('Succseed GET', JSON.stringify(json)))
+
+  const fetchPut = async () => {
+    var data = {userId: 1, id: 1, title: "MOCK: delectus aut autem", completed: false}
+    var response = await fetch('https://jsonplaceholder.typicode.com/posts/1', {
+        method: 'PUT', // или 'POST'
+        body: JSON.stringify(data),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+      var json = await response.json();
+      console.log('Succseed PUT', JSON.stringify(json));
+  }
+
+  fetchPut()
+
+</script>>
 <!-- Some resources and references I often use are placed ABOVE this line -->
 
 </body>
