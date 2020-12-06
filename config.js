@@ -1,4 +1,4 @@
-const headless = false;
+const headless = true;
 module.exports = {
   // ref: https://www.npmjs.com/package/@kard/spa-server
   server: { port: 3030, public: 'static' }, // original
@@ -7,10 +7,10 @@ module.exports = {
   browser: {
     launch: {
       headless,
-      devtools: true, // !headless
+      devtools: !headless
     },
     connect: {
-      slowMo: 0, // headless ? 0 : 50
+      slowMo: headless ? 0 : 50
     },
   },
   jestTimeout: 20000000,
