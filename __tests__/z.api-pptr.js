@@ -1,4 +1,4 @@
-const { browserConnect, createApiMock } = require('../lib');
+const { browserConnect, ApiMock } = require('../lib');
 const config = require('../config');
 
 const waitForTime = ms => new Promise(r => setTimeout(r, ms));
@@ -60,7 +60,7 @@ it('b. api-pptr', async () => {
   const incognitoCtx = await browser.createIncognitoBrowserContext();
   const page = await incognitoCtx.newPage();
 
-  const api = await createApiMock(page, {
+  const api = await new ApiMock(page, {
     onGetResponse: findResponseMock,
     // allowExternalRequests: true,
   });
