@@ -77,7 +77,7 @@ it('b. api-pptr', async () => {
   const resultA = api.find(awaitedRequestA) || await api.waitForRequest(awaitedRequestA)
   expect(!!resultA).toEqual(true);
   const rQty = api.filter(awaitedRequestA).length
-  console.log('RESULT A', rQty, resultA)
+  // console.log('RESULT A', rQty, resultA)
 
   const awaitedRequestB = {
     method: 'PUT',
@@ -88,7 +88,7 @@ it('b. api-pptr', async () => {
   }
   const resultB = api.find(awaitedRequestB) || await api.waitForRequest(awaitedRequestB)
   expect(!!resultB).toEqual(true);
-  console.log('RESULT B', resultB)
+  // console.log('RESULT B', resultB)
 
   // Get the "viewport" of the page, as reported by the page.
   const dimensions = await page.evaluate(() => {
