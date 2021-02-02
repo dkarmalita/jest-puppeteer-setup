@@ -72,7 +72,7 @@ const findResponseMock = (req) => (apiMock.find(el => {
 ```
 
 Each inbound request has the following fields:
-* `url` - parsed Url object
+* `url` - parsed `Url` object
 * `type` - request type (`fetch`, `xhr`, etc.)
 * `method` - the method of the request (`GET`, `POST`, `PUT`, `HEAD`, `DELETE`, `PATCH`)
 * `postData` - the request payload or undefined.
