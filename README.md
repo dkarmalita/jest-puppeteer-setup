@@ -23,9 +23,9 @@ Please pay attention to the `config.js` file in the root of the project. It can 
 
 ## Mocking API
 
-First of all, we need to prepare some API mock - an array of requests accompanying its responses data. Each entry of the mock has to have several fields to identify the mocking request: `host`, `pathname`, `method`. 
+First of all, we need to prepare some API mock - an array of requests accompanying its responses data. Each mock record must have multiple fields to identify the request uniquely. Usually, it'll be: `host`, `pathname`,  and `method`. But you are free to add all of the fields you need and use them respectively during comparison in the `onGetResponse` handler (see below).
 
-And `response` within all of the data necessary to respond to this request:
+Also, each mock request must have the `response` field within all of the data necessary to respond to this request:
 
 * `status` field within the numerical response status value
 * `body` field - a stringified payload object
@@ -60,7 +60,7 @@ const apiMock = [
 ]
 ```
 
-Also, we need to prepare a function that can find and return the required mock element within the array.
+Next step, we need to prepare a function that can find and return the required mock element within the array. It will get an inbound request and have iterate over the mocks array, find the corresponding mock object, and return it.
 
 __search function example__
 ```js
@@ -71,7 +71,38 @@ const findResponseMock = (req) => (apiMock.find(el => {
 }) || {}).response
 ```
 
-Now we are ready to initialize the API mock server. It takes two parameters: the puppeteer `page` and the options object. The options have to contain the `onGetResponse` field points to the search function prepared above. Additionally, it can contain an `allowExternalRequests` field that prevents requests from being dropped outside the mock.
+Each inbound request has the following fields:
+* `url` - parsed Url object
+* `type` - request type (`fetch`, `xhr`, etc.)
+* `method` - the method of the request (`GET`, `POST`, `PUT`, `HEAD`, `DELETE`, `PATCH`)
+* postData - the request payload or undefined.
+
+Please note that the `OPTIONS` requests are held by the library itself and need no additional mocks.
+
+__request example__
+```js
+{
+  url: Url {
+    protocol: 'https:',
+    slashes: true,
+    auth: null,
+    host: 'jsonplaceholder.typicode.com',
+    port: null,
+    hostname: 'jsonplaceholder.typicode.com',
+    hash: null,
+    search: null,
+    query: null,
+    pathname: '/posts/1',
+    path: '/posts/1',
+    href: 'https://jsonplaceholder.typicode.com/posts/1'
+  },
+  type: 'fetch',
+  method: 'PUT',
+  postData: '{"userId":1,"id":1,"title":"MOCK: delectus aut autem","completed":false}'
+}
+```
+
+NHere we are ready to initialize the API mock server. It takes two parameters: the puppeteer `page` and the options object. The options have to contain the `onGetResponse` field points to the search function prepared above. Additionally, it can contain an `allowExternalRequests` field that prevents requests from being dropped outside the mock.
 
 __initialization pattern__
 ```js
