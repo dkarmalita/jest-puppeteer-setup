@@ -1,4 +1,4 @@
-const headless = true;
+const headless = false;
 module.exports = {
   // ref: https://www.npmjs.com/package/@kard/spa-server
   server: { port: 3030, public: 'static' }, // original
