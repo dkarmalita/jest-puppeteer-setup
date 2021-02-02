@@ -29,7 +29,7 @@ Also, each mock request must have the `response` field within all of the data ne
 
 * `status` field within the numerical response status value
 * `body` field - a stringified payload object
-* `content` field - format identifier string (usually `application/json`)
+* `contentType` field - format identifier string (usually `application/json`)
 * `headers` field - object container for all of the headers necessary
 
 For more details on the response structure, please refer to the puppeteer documentation [here](https://pptr.dev/#?product=Puppeteer&version=v5.5.0&show=api-httprequestrespondresponse).
@@ -43,7 +43,7 @@ const apiMock = [
     method: 'GET',
     response: {
       body: JSON.stringify({ userId: 1, id: 1, title: "MOCK: delectus aut autem", completed: false }),
-      content: 'application/json',
+      contentType: 'application/json',
       headers: { 'Access-Control-Allow-Origin': '*' },
       status: 200,
     }
@@ -54,7 +54,7 @@ const apiMock = [
     method: 'PUT',
     response: {
       body: JSON.stringify({ userId: 1, id: 1, title: "MOCK: delectus aut autem", completed: false }),
-      content: 'application/json',
+      contentType: 'application/json',
       headers: { 'Access-Control-Allow-Origin': '*' },
       status: 200,
     }

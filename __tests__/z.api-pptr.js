@@ -31,7 +31,7 @@ const apiMock = [
     method: 'GET',
     response: {
       body: JSON.stringify({ userId: 1, id: 1, title: "MOCK: delectus aut autem", completed: false }),
-      content: 'application/json',
+      contentType: 'application/json',
       headers: { 'Access-Control-Allow-Origin': '*' },
       status: 200,
     }
@@ -42,7 +42,7 @@ const apiMock = [
     method: 'PUT',
     response: {
       body: JSON.stringify({ userId: 1, id: 1, title: "MOCK: delectus aut autem", completed: false }),
-      content: 'application/json',
+      contentType: 'application/json',
       headers: { 'Access-Control-Allow-Origin': '*' },
       status: 200,
     }
@@ -104,6 +104,8 @@ it('b. api-pptr', async () => {
 
   // console.log('PAYLOAD b: Get Dimensions:', dimensions);
   expect(dimensions).toEqual({ width: 800, height: 600, deviceScaleFactor: 1 })
+
+  // await waitForTime(config.jestTimeout)
 
   await page.close();
 })
