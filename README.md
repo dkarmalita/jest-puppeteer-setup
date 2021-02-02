@@ -73,6 +73,7 @@ const findResponseMock = (req) => (apiMock.find(el => {
 
 Now we are ready to initialize the API mock server. It takes two parameters: the puppeteer `page` and the options object. The options have to contain the `onGetResponse` field points to the search function prepared above. Additionally, it can contain an `allowExternalRequests` field that prevents requests from being dropped outside the mock.
 
+__initialization pattern__
 ```js
 const { ApiMock } = require('../lib');
 
