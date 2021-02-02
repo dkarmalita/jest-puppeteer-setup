@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "node main --forceBrowserLaunch __mx__/mx.first.spec.js"
+    "test": "node main --forceBrowserLaunch __mx__/mx.first.spec.js",
+    "mx": "node main --forceBrowserLaunch"
   },
   "keywords": [],
   "author": "",
