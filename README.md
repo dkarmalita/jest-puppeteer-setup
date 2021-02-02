@@ -25,12 +25,14 @@ Please pay attention to the `config.js` file in the root of the project. It can 
 
 First of all, we need to prepare some API mock - an array of requests accompanying its responses data. Each mock record must have multiple fields to identify the request uniquely. Usually, it'll be: `host`, `pathname`,  and `method`. But you are free to add all of the fields you need and use them respectively during comparison in the `onGetResponse` handler (see below).
 
-Also, each mock request must have the `response` field within all of the data necessary to respond to this request:
+Also, each mock request must have the `response` field within all of the data necessary to respond to this request. The response is the exact piece of data is sending in the response to the identified request. Typically, it contains the following field:
 
 * `status` field within the numerical response status value
 * `body` field - a stringified payload object
-* `content` field - format identifier string (usually "application/json") 
+* `content` field - format identifier string (usually `application/json`)
 * `headers` field - object container for all of the headers necessary
+
+For more details on the response structure, please refer to the puppeteer documentation [here](https://pptr.dev/#?product=Puppeteer&version=v5.5.0&show=api-httprequestrespondresponse).
 
 __mock example__
 ```js
